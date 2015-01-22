@@ -56,3 +56,8 @@ group :production do
 end
 
 ruby '2.0.0'
+
+group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+end
