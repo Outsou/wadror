@@ -46,3 +46,5 @@ end
 group :development, :test do
   gem "better_errors"
 end
+
+gem 'bcrypt', '~> 3.1.7'
