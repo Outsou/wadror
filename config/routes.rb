@@ -17,8 +17,11 @@ Ratebeer::Application.routes.draw do
   resources :breweries
 
   get 'signup', to: 'users#new'
+  get 'signin', to: 'sessions#new'
+  delete 'signout', to: 'sessions#destroy'
 
   resource :session, only: [:new, :create, :delete]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
