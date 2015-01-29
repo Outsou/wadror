@@ -5,5 +5,25 @@
   <%= @user.username %>
 </p>
 
+<p>
+  <% if @user.ratings.empty? %>
+      User doesn't have ratings.
+  <% else %>
+      Has made <%= "#{pluralize @user.ratings.count, "rating"}" %>, average <%= @user.average_rating %>
+  <% end %>
+</p>
+
+<p>
+  <strong>ratings</strong>
+</p>
+
+<p>
+    <ul>
+      <% @user.ratings.each do |rating| %>
+          <li> <%= rating %> <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <% end %>
+    </ul>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
