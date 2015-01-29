@@ -6,5 +6,7 @@ class User < ActiveRecord::Base
                       maximum: 15 }
 
   has_many :ratings
+  has_many :memberships
   has_many :beers, through: :ratings
+  has_many :beer_clubs, through: :memberships
 end
