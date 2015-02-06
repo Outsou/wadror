@@ -20,6 +20,13 @@
 </p>
 
 <p>
+  <% if @user.favorite_brewery.nil? %>
+  <% else %>
+      Favorite brewery: <%= @user.favorite_brewery.name %>
+  <% end %>
+</p>
+
+<p>
   <strong>ratings</strong>
 </p>
 

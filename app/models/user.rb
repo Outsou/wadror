@@ -34,4 +34,20 @@ class User < ActiveRecord::Base
     ratings_for_style = ratings.select{|r| r.beer.style == style}
     ratings_for_style.inject(0){ |sum, r| sum + r.score }.to_f / ratings_for_style.count
   end
+
+  def favorite_brewery
+    return nil if ratings.empty?
+    brewery_averages = get_breweries.map{ |b| { brewery:b, average:get_brewery_average(b) } }
+
+    brewery_averages.sort{ |left, right| left[:average] <=> right[:average] }.last[:brewery]
+  end
+
+  def get_breweries
+    ratings.map{ |r| r.beer.brewery }.uniq
+  end
+
+  def get_brewery_average(brewery)
+    ratings_for_brewery = ratings.select{|r| r.beer.brewery == brewery}
+    ratings_for_brewery.inject(0){ |sum, r| sum + r.score }.to_f / ratings_for_brewery.count
+  end
 end

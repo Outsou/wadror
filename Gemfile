@@ -53,6 +53,8 @@ end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 gem 'bcrypt', '~> 3.1.7'
