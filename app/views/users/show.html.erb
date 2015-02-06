@@ -13,6 +13,13 @@
 </p>
 
 <p>
+  <% if @user.favorite_style.nil? %>
+  <% else %>
+      Favorite style: <%= @user.favorite_style %>
+  <% end %>
+</p>
+
+<p>
   <strong>ratings</strong>
 </p>
 

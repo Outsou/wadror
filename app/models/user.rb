@@ -13,4 +13,25 @@ class User < ActiveRecord::Base
   has_many :beer_clubs, through: :memberships
 
   has_secure_password
+
+  def favorite_beer
+    return nil if ratings.empty?
+    ratings.order(score: :desc).limit(1).first.beer
+  end
+
+  def favorite_style
+    return nil if ratings.empty?
+    style_averages = get_styles.map{ |s| { style:s, average:get_style_average(s) } }
+
+    style_averages.sort{ |left, right| left[:average] <=> right[:average] }.last[:style]
+  end
+
+  def get_styles
+    ratings.map{ |r| r.beer.style }.uniq
+  end
+
+  def get_style_average(style)
+    ratings_for_style = ratings.select{|r| r.beer.style == style}
+    ratings_for_style.inject(0){ |sum, r| sum + r.score }.to_f / ratings_for_style.count
+  end
 end
