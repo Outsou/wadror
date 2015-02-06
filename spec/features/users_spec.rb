@@ -48,6 +48,14 @@ describe "User" do
         page.all('a', :text => 'delete')[0].click
       }.to change{Rating.count}.from(@ratings.count).to(@ratings.count-1)
     end
+
+    it "can see his favorite beer style on user page" do
+      expect(page).to have_content "Favorite style: #{@user.favorite_style}"
+    end
+
+    it "can see his favorite brewery on user page" do
+      expect(page).to have_content "Favorite brewery: #{@user.favorite_brewery.name}"
+    end
   end
 
   it "when signed up with good credentials, is added to the system" do
