@@ -47,4 +47,8 @@ group :development, :test do
   gem "better_errors"
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end
+
 gem 'bcrypt', '~> 3.1.7'
