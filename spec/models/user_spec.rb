@@ -1,5 +1,11 @@
 require 'rails_helper'
 
+BeerClub
+BeerClubsController
+BeersController
+BreweriesController
+MembershipsController
+
 RSpec.describe User, type: :model do
   it "has the username set correctly" do
     user = User.new username:"Pekka"
