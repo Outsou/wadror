@@ -1,10 +1,15 @@
 language: ruby
-
 rvm:
- - 2.0.0
-
+- 2.0.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: YjMnxeP6psI/pTcGNr3zOfL27PooJ3BFLyAQ8U+kLDHlaUPLqhXcji4eAN/Utd5LYzbG+NT9e7uvhKB+21THGI1r1DTve4HKredzrA7L9f+uMemmCvdeKyVMBwJcQjWktL4SMaonIOMftA9CkY1kN/Z4J2cyFKVacqn8AzUIWhM=
+  app: pure-hollows-4999
+  on:
+    repo: Outsou/wadror
