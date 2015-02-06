@@ -24,24 +24,29 @@ describe "User" do
   describe "who is signed in" do
     before :each do
       sign_in(username:"Pekka", password:"Foobar1")
-
       @ratings = create_ratings(@user)
+      visit user_path(@user)
     end
 
     it "can see own ratings in user page" do
-      visit user_path(@user)
       @ratings.each do |rating|
-        expect(page).to have_content "#{rating[0].name} #{rating[1]}"
+        expect(page).to have_content "#{rating.beer.name} #{rating.score}"
       end
     end
 
     it "can't see other users' ratings on user page" do
       user2 = FactoryGirl.create(:user, username:"Pekka2")
-      rating = FactoryGirl.create(:rating, beer:@ratings[0][0], score:@ratings[0][1]+1, user:user2)
+      rating = FactoryGirl.create(:rating, beer:@ratings.first.beer, score:@ratings.first.score+1, user:user2)
 
       visit user_path(@user)
 
       expect(page).to_not have_content "#{rating.beer.name} #{rating.score}"
+    end
+
+    it "can remove own rating" do
+      expect {
+        page.all('a', :text => 'delete')[0].click
+      }.to change{Rating.count}.from(@ratings.count).to(@ratings.count-1)
     end
   end
 
