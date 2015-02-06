@@ -56,3 +56,16 @@ def sign_in(credentials)
   fill_in('password', with:credentials[:password])
   click_button('Log in')
 end
+
+def create_ratings(user)
+  beer1 = FactoryGirl.create(:beer, name:"Beer1")
+  beer2 = FactoryGirl.create(:beer, name:"Beer2")
+
+  ratings = [ [beer1, 20], [beer2, 10], [beer1, 30] ]
+
+  ratings.each do |rating|
+    FactoryGirl.create(:rating, beer:rating[0], score:rating[1], user:user)
+  end
+
+  ratings
+end
