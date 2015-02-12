@@ -13,4 +13,7 @@ deploy:
   app: pure-hollows-4999
   on:
     repo: Outsou/wadror
-  run: "rake db:migrate"
+  run: rake db:migrate
+env:
+  global:
+    secure: YWeamXlTstzxeBYjWgRBYip2w5EGIVhAjYD3gz2Ew+rBGLdWEUvKb/DwIdXdK6k2vyHGntz7pT7/hTZCftVA4CD7cw1wRzzvyZ3hkC3Z8I7nB7i1IDvSo/JCs/CzIVwQyUHT4mi1NMSV/co8sRMHS+qPNllCxLg2fC7qSWxXRoE=
