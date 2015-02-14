@@ -58,7 +58,7 @@ class MembershipsController < ApplicationController
   def destroy
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to memberships_url }
+      format.html { redirect_to @membership.user, notice: "Memebership in #{@membership.beer_club.name} ended." }
       format.json { head :no_content }
     end
   end
