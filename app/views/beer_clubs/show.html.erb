@@ -22,7 +22,8 @@
       <% end %>
     </ul>
 </p>
-<% if current_user %>
+
+<% if current_user and @beer_club.users.exclude? current_user %>
     <%= form_for(@membership) do |f| %>
         <%= f.hidden_field :beer_club_id %>
         <%= f.submit value:"join the club" %>
