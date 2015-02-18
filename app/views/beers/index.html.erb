@@ -13,17 +13,17 @@
   </thead>
 
   <tbody>
-    <% @beers.each do |beer| %>
       <table class="table table-hover">
-          <tr>
-            <td><%= link_to beer.name, beer %></td>
-            <td><%= beer.style %></td>
-            <td><%= link_to beer.brewery.name, beer.brewery %></td>
-            <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
-            <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+        <% @beers.each do |beer| %>
+              <tr>
+                <td><%= link_to beer.name, beer %></td>
+                <td><%= beer.style %></td>
+                <td><%= link_to beer.brewery.name, beer.brewery %></td>
+                <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
+                <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+        <% end %>
       </table>
-    <% end %>
   </tbody>
 </table>
 
