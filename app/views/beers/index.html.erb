@@ -29,6 +29,7 @@
 
 <br>
 
-<%= link_to('New Beer', new_beer_path, class:"btn btn-primary") if current_user %>
-<br>
-<%= link_to 'List of breweries', breweries_path %>
+<div class="btn-group" role="group">
+    <%= link_to('New Beer', new_beer_path, class:"btn btn-primary") if current_user %>
+    <%= link_to 'List of breweries', breweries_path, class:"btn btn-primary" %>
+</div>
