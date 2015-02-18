@@ -1,0 +1,17 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th></th>
+    <th>average</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% objects.each do |object| %>
+      <tr>
+        <td><%= link_to object, object %></td>
+        <td><%= object.average_rating %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
