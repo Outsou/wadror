@@ -14,6 +14,7 @@
 
   <tbody>
     <% @beer_clubs.each do |beer_club| %>
+      <table class="table table-hover">
       <tr>
         <td><%= beer_club.name %></td>
         <td><%= beer_club.founded %></td>
@@ -22,6 +23,7 @@
         <td><%= link_to 'Edit', edit_beer_club_path(beer_club) %></td>
         <td><%= link_to 'Destroy', beer_club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      </table>
     <% end %>
   </tbody>
 </table>
