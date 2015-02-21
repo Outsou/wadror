@@ -20,7 +20,9 @@ Ratebeer::Application.routes.draw do
 
   resources :beers
 
-  resources :breweries
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
 
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
