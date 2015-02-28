@@ -1,16 +1,28 @@
 <h1>Listing breweries</h1>
 
+<div style="border-style: solid;">
+  brewerylist-name: <%= ActionController::Base.new.fragment_exist?( 'brewerylist-name' ) %>
+  <br>
+  beerlist-year: <%= ActionController::Base.new.fragment_exist?( 'brewerylist-year' ) %>
+  <br>
+  current: <%= "brewerylist-#{@order}" %>
+</div>
+
 <h2>Active</h2>
 
-<p> Number of active breweries: <%= @active_breweries.count %> </p>
+<% cache "brewerylist-#{@order}", skip_digest: true do %>
 
-<%= render 'list', breweries: @active_breweries %>
+    <p> Number of active breweries: <%= @active_breweries.count %> </p>
 
-<h2>Retired</h2>
+    <%= render 'list', breweries: @active_breweries %>
 
-<p> Number of retired breweries: <%= @retired_breweries.count %> </p>
+    <h2>Retired</h2>
 
-<%= render 'list', breweries: @retired_breweries %>
+    <p> Number of retired breweries: <%= @retired_breweries.count %> </p>
+
+    <%= render 'list', breweries: @retired_breweries %>
+
+<% end %>
 
 <br>
 <div class="btn-group" role="group">
