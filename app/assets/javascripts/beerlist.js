@@ -22,7 +22,7 @@ BEERS.sort_by_name = function(){
 
 BEERS.sort_by_style = function(){
     BEERS.list.sort( function(a,b){
-        return a.style.name.toUpperCase().localeCompare(b.style.name.toUpperCase());
+        return a.style.style.toUpperCase().localeCompare(b.style.style.toUpperCase());
     });
 };
 
