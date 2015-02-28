@@ -21,10 +21,14 @@ Ratebeer::Application.routes.draw do
   resources :ratings, only: [:index, :new, :create, :destroy]
 
   resources :beers
+  get 'beerlist', to:'beers#list'
+  get 'ngbeerlist', to:'beers#nglist'
 
   resources :breweries do
     post 'toggle_activity', on: :member
   end
+
+  get 'brewerylist', to:'breweries#brewerylist'
 
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'

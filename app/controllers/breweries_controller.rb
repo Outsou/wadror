@@ -6,6 +6,8 @@ class BreweriesController < ApplicationController
   # GET /breweries
   # GET /breweries.json
   def index
+    @breweries = Brewery.all
+
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
 
@@ -90,6 +92,9 @@ class BreweriesController < ApplicationController
     new_status = brewery.active? ? "active" : "retired"
 
     redirect_to :back, notice:"brewery activity status changed to #{new_status}"
+  end
+
+  def brewerylist
   end
 
   private
