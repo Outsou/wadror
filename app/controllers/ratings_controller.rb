@@ -1,6 +1,8 @@
 class RatingsController < ApplicationController
+  before_action :skip_if_cached, only: [:index]
+
   def index
-    @ratings = Rating.all
+    #@ratings = Rating.all
     @best_beers = Beer.top(3)
     @best_breweries = Brewery.top(3)
     @most_active_users = User.top(3)
@@ -29,5 +31,11 @@ class RatingsController < ApplicationController
     rating = Rating.find(params[:id])
     rating.delete if current_user == rating.user
     redirect_to :back
+  end
+
+  private
+
+  def skip_if_cached
+    return render :index if fragment_exist?( "ratings_page"  )
   end
 end
