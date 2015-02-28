@@ -57,6 +57,8 @@ group :test do
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'webmock'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
 end
 
 gem 'bootstrap-sass'
