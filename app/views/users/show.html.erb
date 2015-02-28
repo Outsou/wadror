@@ -65,7 +65,7 @@
 <% end %>
 <%= link_to 'Back', users_path %>
 
-<% if current_user.admin %>
+<% if !current_user.nil? and current_user.admin? %>
     <% btntxt = @user.banned? ? "reactivate account" : "freeze account" %>
     <%= link_to btntxt, toggle_activity_user_path(@user.id), method: :post, class: "btn btn-danger" %>
 <% end %>

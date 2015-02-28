@@ -175,6 +175,7 @@
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.6.6.2, rbenv: 2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v0.18.1, rbenv: 2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.6.0, rbenv: 2.0.0-p353) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-mini-profiler (v0.9.3, rbenv: 2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.3, rbenv: 2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v4.2.0, rbenv: 2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-deprecated_sanitizer (v1.0.3, rbenv: 2.0.0-p353) [gem]" level="application" />
