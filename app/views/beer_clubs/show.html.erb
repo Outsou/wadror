@@ -16,12 +16,29 @@
 </p>
 
 <p>
+    <strong>Members:</strong>
     <ul>
-      <% @beer_club.users.each do |member| %>
-          <li> <%= link_to member.username, member %> </li>
+      <% @confirmed_memberships.each do |membership| %>
+          <li> <%= link_to membership.user.username, membership.user %> </li>
       <% end %>
     </ul>
 </p>
+
+<% if @confirmed_memberships.find_by user_id:current_user.id %>
+
+    <p>
+    <strong>Unconfirmed members:</strong>
+    <ul>
+      <% @unconfirmed_memberships.each do |membership| %>
+          <li>
+            <%= link_to membership.user.username, membership.user %>
+            <%= link_to 'Confirm', confirm_membership_path(membership.id), method: :post, class: "btn btn-primary" %>
+          </li>
+      <% end %>
+    </ul>
+    </p>
+
+<% end %>
 
 <% if current_user and @beer_club.users.exclude? current_user %>
     <%= form_for(@membership) do |f| %>

@@ -53,10 +53,22 @@
 
 <p>
     <ul class="list-group">
-      <% @user.beer_clubs.each do |club| %>
-          <li class="list-group-item"> <%= link_to club.name, club %> </li>
+      <% @confirmed_memberships.each do |membership| %>
+          <li class="list-group-item"> <%= link_to membership.beer_club.name, membership.beer_club %> </li>
       <% end %>
     </ul>
+</p>
+
+<p>
+  <strong>pending memberships</strong>
+</p>
+
+<p>
+<ul class="list-group">
+  <% @unconfirmed_memberships.each do |membership| %>
+      <li class="list-group-item"> <%= link_to membership.beer_club.name, membership.beer_club %> </li>
+  <% end %>
+</ul>
 </p>
 
 <% if @user == current_user %>

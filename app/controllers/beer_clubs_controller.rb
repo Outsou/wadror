@@ -13,6 +13,8 @@ class BeerClubsController < ApplicationController
   # GET /beer_clubs/1.json
   def show
     @membership = Membership.find_by user:current_user, beer_club:@beer_club
+    @confirmed_memberships = @beer_club.confirmed_memberships
+    @unconfirmed_memberships = @beer_club.unconfirmed_memberships
     if not @membership
       @membership = Membership.new
       @membership.beer_club = @beer_club
@@ -35,6 +37,8 @@ class BeerClubsController < ApplicationController
 
     respond_to do |format|
       if @beer_club.save
+        @membership = Membership.new(user_id:current_user.id, beer_club_id:@beer_club.id, confirmed:true)
+        @membership.save
         format.html { redirect_to @beer_club, notice: 'Beer club was successfully created.' }
         format.json { render action: 'show', status: :created, location: @beer_club }
       else
